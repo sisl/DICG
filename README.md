@@ -1,13 +1,11 @@
-[Experiment log](https://docs.google.com/spreadsheets/d/18geTTf9DG33P5r0y2SqTdlo4nYks6GjR07rkwJyLwEQ/edit?usp=sharing)
-
 # Deep Implicit Coordination Graphs (DICG)
 
 ## Installation
-Recommend to install within a [`conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) virtual environment. Requires `python>=3.7`. Install dependencies by running the following command in the root directory of this repo:
+Recommend to run within a [`conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) virtual environment. Requires `python=3.7`. Install dependencies by running the following command in the root directory of this repo:
 ```
     pip install -r requirements.txt
 ```
-The predator-prey environment and the traffic junction environment are included in this repo. To run the StarCraft Multi-agent Challenge (SMAC) environment, please follow the instructions [here](https://github.com/oxwhirl/smac).  You will need to install the StarCraft II game as well as the SMAC maps.
+The Predator-Prey environment and the Traffic Junction environment are included in this repo. To run the StarCraft Multi-agent Challenge (SMAC) environment, please follow the instructions [here](https://github.com/oxwhirl/smac).  You will need to install the StarCraft II game as well as the SMAC maps.
 
 ## Running Experiments
 ### Predator-Prey

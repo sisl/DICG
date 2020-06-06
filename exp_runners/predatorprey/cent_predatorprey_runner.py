@@ -20,6 +20,7 @@ from garage.envs import GarageEnv
 from garage.experiment.deterministic import set_seed
 
 from envs import PredatorPreyWrapper
+from dicg.torch.baselines import GaussianMLPBaseline
 from dicg.torch.algos import CentralizedMAPPO
 from dicg.torch.policies import CentralizedCategoricalMLPPolicy
 from dicg.experiment.local_runner_wrapper import LocalRunnerWrapper
@@ -52,14 +53,9 @@ def run(args):
     else:
         exp_name = args.exp_name
 
-    if args.loc is None:
-        loc = 'local' if socket.gethostname() in ['Mac', 'cave'] else 'remote'
-    else:
-        loc = args.loc
-
     prefix = 'predatorprey'
     id_suffix = ('_' + str(args.run_id)) if args.run_id != 0 else ''
-    exp_dir = './data/' + loc +'/' + exp_name + id_suffix
+    exp_dir = './data/' + args.loc +'/' + exp_name + id_suffix
 
     # Enforce
     args.center_adv = False if args.entropy_method == 'max' else args.center_adv
@@ -110,7 +106,8 @@ def run(args):
                 name='centralized'
             )
 
-            baseline = LinearFeatureBaseline(env_spec=env.spec)
+            baseline = GaussianMLPBaseline(env_spec=env.spec,
+                                           hidden_sizes=(64, 64, 64))
             
             # Set max_path_length <= max_steps
             # If max_path_length > max_steps, algo will pad obs

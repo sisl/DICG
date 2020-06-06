@@ -118,12 +118,8 @@ def run(args):
                 name='dec_categorical_mlp_policy'
             )
 
-            if args.difficulty in ['easy', 'medium']:
-                baseline = GaussianMLPBaseline(env_spec=env.spec,
-                                               hidden_sizes=(64, 64, 64))
-            elif args.difficulty == 'hard':
-                baseline = GaussianMLPBaseline(env_spec=env.spec,
-                                               hidden_sizes=(15, 64, 64))
+            baseline = GaussianMLPBaseline(env_spec=env.spec,
+                                           hidden_sizes=(64, 64, 64))
             
             # Set max_path_length <= max_steps
             # If max_path_length > max_steps, algo will pad obs

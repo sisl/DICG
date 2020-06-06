@@ -58,15 +58,10 @@ def run(args):
     else:
         exp_name = args.exp_name
 
-    if args.loc is None:
-        loc = 'local' if socket.gethostname() in ['Mac', 'cave'] else 'remote'
-    else:
-        loc = args.loc
-
     prefix = 'predatorprey'
     id_suffix = ('_' + str(args.run_id)) if args.run_id != 0 else ''
     unseeded_exp_dir = './' + prefix + '_data/' + loc +'/' + exp_name[:-7]
-    exp_dir = './data/' + loc +'/' + exp_name + id_suffix
+    exp_dir = './data/' + args.loc +'/' + exp_name + id_suffix
 
     # Enforce
     args.center_adv = False if args.entropy_method == 'max' else args.center_adv
