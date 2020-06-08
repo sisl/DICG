@@ -1,4 +1,3 @@
-"""Vanilla Policy Gradient (REINFORCE)."""
 import collections
 import copy
 
