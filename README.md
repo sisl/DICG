@@ -28,8 +28,13 @@ To train in Predator-Prey, please `cd` into `/exp_runners/predatorprey/` and run
 
 The model checkpoints will be saved in `/exp_runners/predatorprey/data/local/`.
 
-Reported results in paper (average of 5 random seeds, utill `7.5e6` environment steps):
-![Predator-Prey Results](/docs/predprey.png)
+Reported **average return** (average of 5 random seeds, utill `7.5e6` environment steps):
+| Approach | `P = 0` | `P = -1` | `P = -1.25` | `P = -1.5` |
+|--|--|--|--|--|
+| DICG-CE-MLP | 78.6 ± 0.1 | 70.2 ± 0.7 | 72.0 ± 1.0 | 72.0 ± 0.7|
+| DICG-DE-MLP | 78.2 ± 0.0| 70.5 ± 2.7 | 72.4 ± 1.1 | 70.0 ± 2.7|
+| CENT-MLP | 75.0 ± 0.1 | -39.8 ± 3.8 | -52.28 ± 1.3| -65.8 ± 2.9|
+| DEC-MLP | 74.4 ± 0.3 | 56.6 ± 0.7 | 56.7 ± 1.1 | 57.9 ± 0.3|
 
 ### SMAC
 Experiment runners are in `/exp_runners/smac/`, detailed argument specification list can be found in the included runner files. 
@@ -43,8 +48,8 @@ To train in SMAC, please `cd` into `/exp_runners/smac/` and run following comman
 
 The model checkpoints will be saved in `/exp_runners/smac/data/local/`.
 
-Reported average win rate in paper (average of 5 random seeds, utill `9e6` environment steps for `8m_vs_9m` and `1.8e7` environment steps for the other two maps):
-| Approach | `8m_vs_9m` | `3s_vs_5z` | `6h_vs_8z` |
+Reported **average win rate** (average of 5 random seeds, utill `9e6` environment steps for `8m_vs_9m` and `1.8e7` environment steps for the other two maps):
+| Approach | `easy` | `medium` | `hard` |
 |--|--|--|--|
 |  DICG-CE-LSTM |72 ± 11 %  |96 ± 3 % | 9 ± 9 % |
 |  DICG-DE-LSTM |87 ± 6 % |99 ± 1 % | 0 |
@@ -64,7 +69,7 @@ To train in Traffic Junction, please `cd` into `/exp_runners/traffic/` and run f
 
 The model checkpoints will be saved in `/exp_runners/traffic/data/local/`.
 
-Reported average success rate in paper (average of 5 random seeds, utill `2.5e6` environment steps):
+Reported **average success rate** (average of 5 random seeds, utill `2.5e6` environment steps):
 | Approach | `easy` | `medium` | `hard` |
 |--|--|--|--|
 |  DICG-CE-MLP |98.1 ± 1.9 % |80.5 ± 6.8 % | 22.8 ± 4.6 % |
