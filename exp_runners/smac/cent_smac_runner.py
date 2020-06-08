@@ -163,10 +163,6 @@ def run(args):
                 save_replay=args.save_replay)
             env.close()
 
-    elif args.mode == 'plot':
-        from ..utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -212,8 +208,6 @@ if __name__ == '__main__':
     parser.add_argument('--embedding_dim', type=int, default=128)
     parser.add_argument('--lstm_hidden_size', type=int, default=128)
     parser.add_argument('--state_include_actions', type=int, default=1)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 
@@ -222,6 +216,16 @@ if __name__ == '__main__':
 
     if args.encoder_hidden_sizes is None:
         args.encoder_hidden_sizes = [128, ] # Default hidden sizes
+
+    if args.map == '8m_vs_9m':
+        args.ent = 0.025
+        args.bs = 80000
+    elif args.map == '3s_vs_5z':
+        args.ent = 0.1
+        args.bs = 60000
+    elif args.map == '6h_vs_8z':
+        args.ent = 0.025
+        args.bs = 60000
 
     run(args)
 

@@ -198,10 +198,6 @@ def run(args):
             from .attention_stats import plot_attn_stats
             plot_attn_stats(distance_vs_weight, exp_dir)
 
-    elif args.mode == 'plot':
-        from tests.utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
     elif args.mode == 'analysis':
         from tests.predatorprey.attention_stats import attn_analysis
         attn_analysis(unseeded_exp_dir, args, seeds=[1])
@@ -258,8 +254,6 @@ if __name__ == '__main__':
     parser.add_argument('--gcn_bias', type=int, default=1)
     parser.add_argument('--categorical_mlp_hidden_sizes', nargs='+', type=int)
     parser.add_argument('--residual', type=int, default=1)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 

@@ -170,10 +170,6 @@ def run(args):
             env.eval(algo.policy, n_episodes=args.n_eval_episodes, greedy=args.eval_greedy, 
                 load_from_file=True, max_steps=args.max_env_steps)
 
-    elif args.mode == 'plot':
-        from tests.utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -223,8 +219,6 @@ if __name__ == '__main__':
     # Policy
     # Example: --encoder_hidden_sizes 12 123 1234 
     parser.add_argument('--policy_hidden_sizes', nargs='+', type=int)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 

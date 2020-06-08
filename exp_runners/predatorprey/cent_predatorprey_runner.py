@@ -152,10 +152,6 @@ def run(args):
                 greedy=args.eval_greedy, load_from_file=True, render=args.render)
             env.close()
 
-    elif args.mode == 'plot':
-        from ..utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -200,8 +196,6 @@ if __name__ == '__main__':
     # Policy
     # Example: --hidden_sizes 12 123 1234 
     parser.add_argument('--hidden_sizes', nargs='+', type=int)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 

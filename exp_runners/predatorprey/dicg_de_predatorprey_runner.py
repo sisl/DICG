@@ -224,8 +224,6 @@ if __name__ == '__main__':
     # Policy
     # Example: --encoder_hidden_sizes 12 123 1234 
     parser.add_argument('--policy_hidden_sizes', nargs='+', type=int)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 

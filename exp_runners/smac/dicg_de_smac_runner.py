@@ -82,7 +82,6 @@ def run(args):
                 centralized=True,
                 map_name=args.map,
                 difficulty=args.difficulty,
-                # seed=args.seed
             )
             env = GarageEnv(env)
 
@@ -157,7 +156,6 @@ def run(args):
             difficulty=args.difficulty,
             replay_dir=exp_dir,
             replay_prefix='dicg_de_lstm',
-            # seed=args.seed
         )
         if args.mode == 'restore':
             from dicg.experiment.runner_utils import restore_training
@@ -173,10 +171,6 @@ def run(args):
                 save_replay=args.save_replay)
             env.close()
 
-    elif args.mode == 'plot':
-        from ..utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -187,7 +181,7 @@ if __name__ == '__main__':
     parser.add_argument('--comment', type=str, default='')
     # Train
     parser.add_argument('--seed', '-s', type=int, default=1)
-    parser.add_argument('--n_epochs', type=int, default=2000)
+    parser.add_argument('--n_epochs', type=int, default=1000)
     parser.add_argument('--bs', type=int, default=20000)
     parser.add_argument('--n_envs', type=int, default=1)
     # Eval
@@ -230,8 +224,6 @@ if __name__ == '__main__':
     parser.add_argument('--policy_embedding_dim', type=int, default=64)
     parser.add_argument('--policy_lstm_hidden_size', type=int, default=64)
     parser.add_argument('--state_include_actions', type=int, default=1)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 
@@ -243,6 +235,16 @@ if __name__ == '__main__':
 
     if args.dicg_encoder_hidden_sizes is None:
         args.dicg_encoder_hidden_sizes = [128, ] # Default hidden sizes
+
+    if args.map == '8m_vs_9m':
+        args.ent = 0.025
+        args.bs = 80000
+    elif args.map == '3s_vs_5z':
+        args.ent = 0.1
+        args.bs = 60000
+    elif args.map == '6h_vs_8z':
+        args.ent = 0.025
+        args.bs = 60000
 
     run(args)
 

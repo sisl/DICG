@@ -175,13 +175,6 @@ def run(args):
             env.eval(algo.policy, n_episodes=args.n_eval_episodes, greedy=args.eval_greedy, 
                 load_from_file=True, max_steps=args.max_env_steps)
 
-    elif args.mode == 'plot':
-        from tests.utils import plot_progress
-        plot_progress(args.plot_key, exp_dir)
-
-    elif args.mode == 'analysis':
-        pass
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -233,8 +226,6 @@ if __name__ == '__main__':
     parser.add_argument('--gcn_bias', type=int, default=1)
     parser.add_argument('--categorical_mlp_hidden_sizes', nargs='+', type=int)
     parser.add_argument('--residual', type=int, default=1)
-    # Plot
-    parser.add_argument('--plot_key', type=str, default='AverageReturn')
 
     args = parser.parse_args()
 
