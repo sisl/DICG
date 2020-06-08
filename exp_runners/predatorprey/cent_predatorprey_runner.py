@@ -161,8 +161,8 @@ if __name__ == '__main__':
     parser.add_argument('--exp_name', type=str, default=None)
     # Train
     parser.add_argument('--seed', '-s', type=int, default=1)
-    parser.add_argument('--n_epochs', type=int, default=2000)
-    parser.add_argument('--bs', type=int, default=30000)
+    parser.add_argument('--n_epochs', type=int, default=1000)
+    parser.add_argument('--bs', type=int, default=60000)
     parser.add_argument('--n_envs', type=int, default=1)
     # Eval
     parser.add_argument('--run_id', type=int, default=0) # sequential naming
@@ -187,11 +187,11 @@ if __name__ == '__main__':
     parser.add_argument('--center_adv', type=int, default=1)
     parser.add_argument('--positive_adv', type=int, default=0)
     parser.add_argument('--gae_lambda', type=float, default=0.97)
-    parser.add_argument('--ent', type=float, default=0.05) # 0.01 is too small
+    parser.add_argument('--ent', type=float, default=0.1)
     parser.add_argument('--entropy_method', type=str, default='regularized')
-    parser.add_argument('--opt_n_minibatches', type=int, default=1,
+    parser.add_argument('--opt_n_minibatches', type=int, default=3,
         help='The number of splits of a batch of trajectories for optimization.')
-    parser.add_argument('--opt_mini_epochs', type=int, default=1,
+    parser.add_argument('--opt_mini_epochs', type=int, default=10,
         help='The number of epochs the optimizer runs for each batch of trajectories.')
     # Policy
     # Example: --hidden_sizes 12 123 1234 

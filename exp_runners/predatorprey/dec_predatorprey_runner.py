@@ -183,7 +183,7 @@ if __name__ == '__main__':
     parser.add_argument('--center_adv', type=int, default=1)
     parser.add_argument('--positive_adv', type=int, default=0)
     parser.add_argument('--gae_lambda', type=float, default=0.97)
-    parser.add_argument('--ent', type=float, default=0.1) # 0.01 is too small
+    parser.add_argument('--ent', type=float, default=0.1)
     parser.add_argument('--entropy_method', type=str, default='regularized')
     parser.add_argument('--opt_n_minibatches', type=int, default=3,
         help='The number of splits of a batch of trajectories for optimization.')

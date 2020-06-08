@@ -172,7 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('--comment', type=str, default='')
     # Train
     parser.add_argument('--seed', '-s', type=int, default=1)
-    parser.add_argument('--n_epochs', type=int, default=2000)
+    parser.add_argument('--n_epochs', type=int, default=1000)
     parser.add_argument('--bs', type=int, default=20000)
     parser.add_argument('--n_envs', type=int, default=1)
     # Eval
