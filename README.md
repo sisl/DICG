@@ -28,8 +28,8 @@ To train in Predator-Prey, please `cd` into `/exp_runners/predatorprey/` and run
 
 The model checkpoints will be saved in `/exp_runners/predatorprey/data/local/`.
 
-Reported results in paper (average of 5 random seeds, utill `7.5e6` environment steps)
-
+Reported results in paper (average of 5 random seeds, utill `7.5e6` environment steps):
+![Predator-Prey Results](/docs/predprey.png)
 
 ### SMAC
 Experiment runners are in `/exp_runners/smac/`, detailed argument specification list can be found in the included runner files. 
@@ -44,7 +44,7 @@ To train in SMAC, please `cd` into `/exp_runners/smac/` and run following comman
 The model checkpoints will be saved in `/exp_runners/smac/data/local/`.
 
 Reported average win rate in paper (average of 5 random seeds, utill `9e6` environment steps for `8m_vs_9m` and `1.8e7` environment steps for the other two maps):
-| Approach | `easy` | `medium` | `hard` |
+| Approach | `8m_vs_9m` | `3s_vs_5z` | `6h_vs_8z` |
 |--|--|--|--|
 |  DICG-CE-LSTM |72 ± 11 %  |96 ± 3 % | 9 ± 9 % |
 |  DICG-DE-LSTM |87 ± 6 % |99 ± 1 % | 0 |
