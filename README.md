@@ -49,7 +49,7 @@ To train in SMAC, please `cd` into `/exp_runners/smac/` and run following comman
 The model checkpoints will be saved in `/exp_runners/smac/data/local/`.
 
 Reported **average win rate** (average of 5 random seeds, utill `9e6` environment steps for `8m_vs_9m` and `1.8e7` environment steps for the other two maps):
-| Approach | `easy` | `medium` | `hard` |
+| Approach | `8m_vs_9m` | `3s_vs_5z` | `6h_vs_8z` |
 |--|--|--|--|
 |  DICG-CE-LSTM |72 ± 11 %  |96 ± 3 % | 9 ± 9 % |
 |  DICG-DE-LSTM |87 ± 6 % |99 ± 1 % | 0 |
