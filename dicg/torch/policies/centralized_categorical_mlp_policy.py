@@ -73,7 +73,7 @@ class CentralizedCategoricalMLPPolicy(MLPModule):
         avail_actions_n = avail_actions_n.reshape(
             avail_actions_n.shape[:-1] + (self._n_agents, -1))
         masked_probs = dists_n.probs * torch.Tensor(avail_actions_n) # mask
-        masked_probs = masked_probs / masked_probs.sum(axis=-1, keepdims=True) # renormalize
+        masked_probs = masked_probs / masked_probs.sum(dim=-1, keepdim=True) # renormalize
         masked_dists_n = Categorical(probs=masked_probs) # redefine distribution
         return masked_dists_n
 

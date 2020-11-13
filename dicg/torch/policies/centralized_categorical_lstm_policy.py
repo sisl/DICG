@@ -114,7 +114,7 @@ class CentralizedCategoricalLSTMPolicy(nn.Module):
             max_path_len, n_paths, self._n_agents, self._action_dim)
         masked_probs = masked_probs.transpose(0, 1)
         masked_probs = masked_probs * torch.Tensor(avail_actions_n) # mask
-        masked_probs = masked_probs / masked_probs.sum(axis=-1, keepdims=True) # renormalize
+        masked_probs = masked_probs / masked_probs.sum(dim=-1, keepdim=True) # renormalize
         masked_dists_n = Categorical(probs=masked_probs) # redefine distribution
 
         return masked_dists_n

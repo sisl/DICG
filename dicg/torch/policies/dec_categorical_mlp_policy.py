@@ -90,7 +90,7 @@ class DecCategoricalMLPPolicy(Policy, CategoricalMLPModule):
         avail_actions = avail_actions.reshape(
             avail_actions.shape[:-1] + (self._n_agents, -1))
         masked_probs = dist.probs * avail_actions # mask
-        masked_probs = masked_probs / masked_probs.sum(axis=-1, keepdims=True) # renormalize
+        masked_probs = masked_probs / masked_probs.sum(dim=-1, keepdim=True) # renormalize
         masked_dist = Categorical(probs=masked_probs) # redefine distribution
         return masked_dist
 

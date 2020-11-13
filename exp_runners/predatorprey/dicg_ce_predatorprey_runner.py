@@ -59,7 +59,7 @@ def run(args):
 
     prefix = 'predatorprey'
     id_suffix = ('_' + str(args.run_id)) if args.run_id != 0 else ''
-    unseeded_exp_dir = './' + prefix + '_data/' + loc +'/' + exp_name[:-7]
+    unseeded_exp_dir = './data/' + args.loc +'/' + exp_name[:-7]
     exp_dir = './data/' + args.loc +'/' + exp_name + id_suffix
 
     # Enforce
@@ -207,7 +207,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # Meta
     parser.add_argument('--mode', '-m', type=str, default='train')
-    parser.add_argument('--loc', type=str, default=None)
+    parser.add_argument('--loc', type=str, default='local')
     parser.add_argument('--exp_name', type=str, default=None)
     # Train
     parser.add_argument('--seed', '-s', type=int, default=1)
