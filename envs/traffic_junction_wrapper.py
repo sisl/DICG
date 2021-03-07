@@ -143,7 +143,7 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
             return np.concatenate(obses)
 
     def eval(self, policy, n_episodes=20, greedy=True, load_from_file=False, 
-             max_steps=60):
+             max_steps=60, render=False):
         import dowel
         from dowel import logger, tabular
         from garage.misc.prog_bar_counter import ProgBarCounter
@@ -160,6 +160,8 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
             policy.reset([True])
             terminated = False
             t = 0
+            if render:
+                self.render()
             episode_rewards.append(0)
             while not terminated:
                 if not self.centralized:

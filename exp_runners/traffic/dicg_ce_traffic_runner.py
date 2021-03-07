@@ -173,7 +173,7 @@ def run(args):
 
         elif args.mode == 'eval':
             env.eval(algo.policy, n_episodes=args.n_eval_episodes, greedy=args.eval_greedy, 
-                load_from_file=True, max_steps=args.max_env_steps)
+                load_from_file=True, max_steps=args.max_env_steps, render=args.render)
 
 
 if __name__ == '__main__':
@@ -190,7 +190,7 @@ if __name__ == '__main__':
     # Eval
     parser.add_argument('--run_id', type=int, default=0) # sequential naming
     parser.add_argument('--n_eval_episodes', type=int, default=100)
-    parser.add_argument('--render', type=int, default=1)
+    parser.add_argument('--render', type=int, default=0)
     parser.add_argument('--inspect_steps', type=int, default=0)
     parser.add_argument('--eval_during_training', type=int, default=1)
     parser.add_argument('--eval_greedy', type=int, default=1)
