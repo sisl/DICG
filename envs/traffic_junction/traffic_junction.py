@@ -24,7 +24,7 @@ import curses
 import gym
 import numpy as np
 from gym import spaces
-from .traffic_helper import *
+from envs.traffic_junction.traffic_helper import *
 
 
 def nPr(n,r):

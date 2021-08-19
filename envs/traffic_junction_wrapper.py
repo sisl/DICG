@@ -143,7 +143,7 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
             return np.concatenate(obses)
 
     def eval(self, policy, n_episodes=20, greedy=True, load_from_file=False, 
-             max_steps=60, render=False):
+             max_steps=60):
         import dowel
         from dowel import logger, tabular
         from garage.misc.prog_bar_counter import ProgBarCounter
@@ -160,8 +160,6 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
             policy.reset([True])
             terminated = False
             t = 0
-            if render:
-                self.render()
             episode_rewards.append(0)
             while not terminated:
                 if not self.centralized:
@@ -200,6 +198,9 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
             tabular.record('EvalAvgReturn', avg_return)
             tabular.record('EvalSucessRate', success)
 
+        # return eval metric
+        return success
+
     def seed(self, n):
         self.np_random, seed1 = seeding.np_random(n)
         seed2 = seeding.hash_seed(seed1 + 1) % 2 ** 31
@@ -207,20 +208,7 @@ class TrafficJunctionWrapper(TrafficJunctionEnv):
 
 
 if __name__ == '__main__':
-    env = TrafficJunctionWrapper(centralized=False)
-    print('Env test, centralized = {}'.format(env.centralized))
-    print('n_agents:', env.n_agents)
-    print('single agent action_space:', env.action_space)
-    print('single agent observation_space:', env.observation_space)
-    obs = env.reset()
-    # print('all agent obs:', obs)
-    for i in range(env.n_agents):
-        obs_i = obs[i]
-        # print('flat obs agent {}:'.format(i), obs_i)
-        print('flat obs len agent {}:'.format(i), len(obs_i))
-
-    print()
-    env = TrafficJunctionWrapper(centralized=True)
+    env = TrafficJunctionWrapper(centralized=True, vocab_type='bool')
     print('Env test, centralized = {}'.format(env.centralized))
     print('n_agents:', env.n_agents)
     print('single agent action_space:', env.action_space)
@@ -228,3 +216,11 @@ if __name__ == '__main__':
     obs = env.reset()
     # print('all agent obs:', obs)
     print('flat full obs len:', len(obs))
+
+    for t in range(env.max_steps):
+        actions = [env.action_space.sample() for _ in range(env.n_agents)]
+        obs, rew, done, info = env.step(actions)
+        print(t)
+        print(env.car_loc[0])
+        print(env.alive_mask[0])
+        print(np.reshape(obs, [env.n_agents, -1])[0, :])

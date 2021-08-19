@@ -74,7 +74,7 @@ def run(args):
                          snapshot_mode='last', 
                          snapshot_gap=1)
         
-        def train_predatorprey(ctxt=None, args_dict=vars(args)):
+        def train_traffic(ctxt=None, args_dict=vars(args)):
             args = SimpleNamespace(**args_dict)
             
             set_seed(args.seed)
@@ -159,7 +159,7 @@ def run(args):
             runner.train(n_epochs=args.n_epochs, 
                          batch_size=args.bs)
 
-        train_predatorprey(args_dict=vars(args))
+        train_traffic(args_dict=vars(args))
 
     elif args.mode in ['restore', 'eval']:
         data = joblib.load(exp_dir + '/params.pkl')
